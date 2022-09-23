@@ -66,8 +66,16 @@ class _State extends State<AuthPage> {
                 padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
                 child: ElevatedButton(
                   onPressed: () => isLogin
-                      ? /* TODO: si isLogin is true inicia sesion */
-                      : /* TODO si no lo es registra al usuario */,
+                      ? /* TO DO: si isLogin is true inicia sesion */
+                      controller.login(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                        )
+                      : /* TO DO si no lo es registra al usuario */
+                      controller.signUp(
+                          email: _emailController.text,
+                          password: _passwordController.text,
+                        ),
                   child: Text(isLogin ? "Iniciar Sesión" : "Crear cuenta"),
                 ),
               ),

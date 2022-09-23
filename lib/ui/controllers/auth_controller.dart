@@ -13,20 +13,29 @@ class AuthController extends GetxController {
   setAuthHandler() {
     ever<User?>(
       _user,
-      /* TODO cuando haya un cambio en _user navega a la pantalla correcta */,
+      /* TO DO cuando haya un cambio en _user navega a la pantalla correcta */
+      (user) => user == null
+          ? Get.off(() => const AuthPage())
+          : Get.off(() => const ContentPage()),
     );
     _user.value = _service.currentUser;
   }
 
   login({required String email, required String password}) async {
-    /* TODO inicia sesion usando el servicio */
+    /* TO DO inicia sesion usando el servicio */
+    await _service.login(email: email, password: password);
+    _user.value = _service.currentUser;
   }
 
   signUp({required String email, required String password}) async {
-    /* TODO crea una cuenta usando el servicio */
+    /* TO DO crea una cuenta usando el servicio */
+    await _service.signUp(email: email, password: password);
+    _user.value = _service.currentUser;
   }
 
   logout() async {
-    /* TODO cierra sesion usando el servicio */
+    /* TO DO cierra sesion usando el servicio */
+    await _service.logout();
+    _user.value = _service.currentUser; //actualiza variable de usuario a null
   }
 }

@@ -17,16 +17,20 @@ class AuthService implements AuthInterface {
 
   @override
   login({required String email, required String password}) async {
-   /* TODO inicia sesion usando el firebase */
+    /* TO DO inicia sesion usando el firebase */
+    await _auth.signInWithEmailAndPassword(email: email, password: password);
   }
 
   @override
   signUp({required String email, required String password}) async {
-   /* TODO crea una cuenta usando el firebase */
+    /* TO DO crea una cuenta usando el firebase */
+    await _auth.createUserWithEmailAndPassword(
+        email: email, password: password);
   }
 
   @override
   logout() async {
-   /* TODO cierra sesion usando el firebase */
+    /* TO DO cierra sesion usando el firebase */
+    await _auth.signOut();
   }
 }

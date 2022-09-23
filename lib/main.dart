@@ -8,7 +8,11 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  /* TODO: Inicializa Firebase */
-  /* TODO: Inyecta el controlador de autentucacion */
+  /* Inicializa Firebase */
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  /* TO DO: Inyecta el controlador de autentucacion */
+  Get.put(AuthController());
   runApp(const AuthApp());
 }
